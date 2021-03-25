@@ -1,13 +1,10 @@
-import astnodes.*;
+import org.antlr.runtime.*;
+import org.jpp.astnodes.*;
 
-import astnodes.ast.Name;
-import astnodes.base.mod;
-import org.antlr.runtime.ANTLRFileStream;
-import org.antlr.runtime.CharStream;
-import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.Token;
+import org.jpp.astnodes.ast.Name;
+import org.jpp.astnodes.base.mod;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
+
 import java.util.List;
 import org.testng.Assert;
 
@@ -23,7 +20,7 @@ public class TestParser {
         @Override
         protected PythonParser setupParser(boolean single) {
             PythonParser parser = super.setupParser(single);
-            parser.setTreeAdaptor(new astnodes.AnalyzingParser.AnalyzerTreeAdaptor());
+            parser.setTreeAdaptor(new org.jpp.astnodes.AnalyzingParser.AnalyzerTreeAdaptor());
             return parser;
         }
     }
@@ -54,7 +51,7 @@ public class TestParser {
         } catch (Exception x) {
             x.printStackTrace();
         }
-        astnodes.AnalyzingParser p = new astnodes.AnalyzingParser(in, "src/test/resources/testast1.py", "ascii");
+        org.jpp.astnodes.AnalyzingParser p = new org.jpp.astnodes.AnalyzingParser(in, "src/test/resources/testast1.py", "ascii");
         mod ast = p.parseModule();
         Assert.assertEquals(ast.getChildren().size(),3);
 
@@ -65,7 +62,7 @@ public class TestParser {
 //        }
     }
     @Test
-    public void testStatements() {
+    public void testStatements() throws Exception {
         System.out.println("test");
         CharStream in = null;
         try {
@@ -73,8 +70,11 @@ public class TestParser {
         } catch (Exception x) {
             x.printStackTrace();
         }
-        astnodes.AnalyzingParser p = new astnodes.AnalyzingParser(in, "src/test/resources/testast2.py", "ascii");
+        AnalyzingParser p = new AnalyzingParser(in, "src/test/resources/testast2.py", "ascii");
         mod ast = p.parseModule();
+        TestVisitor v = new TestVisitor();
+        ast.accept(v);
+
         Assert.assertEquals(ast.getChildren().size(),3);
         if (ast != null) {
             System.out.println("parse result: \n" + ast.toStringTree());
@@ -86,12 +86,14 @@ public class TestParser {
     public void testTryExcept() {
         System.out.println("test");
         CharStream in = null;
+
         try {
             in = new ANTLRFileStream("src/test/resources/testast4.py");
         } catch (Exception x) {
             x.printStackTrace();
         }
-        astnodes.AnalyzingParser p = new astnodes.AnalyzingParser(in, "src/test/resources/testast4.py", "ascii");
+        System.out.println(in);
+        org.jpp.astnodes.AnalyzingParser p = new org.jpp.astnodes.AnalyzingParser(in, "src/test/resources/testast4.py", "ascii");
         mod ast = p.parseModule();
         Assert.assertEquals(ast.getChildren().size(),4);
         if (ast != null) {
@@ -109,9 +111,10 @@ public class TestParser {
         } catch (Exception x) {
             x.printStackTrace();
         }
-        astnodes.AnalyzingParser p = new astnodes.AnalyzingParser(in, "src/test/resources/testast5.py", "ascii");
+        org.jpp.astnodes.AnalyzingParser p = new org.jpp.astnodes.AnalyzingParser(in, "src/test/resources/testast5.py", "ascii");
         mod ast = p.parseModule();
         Assert.assertEquals(ast.getChildren().size(),4);
+
         System.out.println(p.getRecognitionErrors());
         if (ast != null) {
             System.out.println("parse result: \n" + ast.toStringTree());
@@ -128,9 +131,10 @@ public class TestParser {
         } catch (Exception x) {
             x.printStackTrace();
         }
-        astnodes.AnalyzingParser p = new astnodes.AnalyzingParser(in, "src/test/resources/testast6.py", "ascii");
+        org.jpp.astnodes.AnalyzingParser p = new org.jpp.astnodes.AnalyzingParser(in, "src/test/resources/testast6.py", "ascii");
         mod ast = p.parseModule();
         Assert.assertEquals(ast.getChildren().size(),32);
+
         System.out.println(p.getRecognitionErrors());
         if (ast != null) {
             System.out.println("parse result: \n" + ast.toStringTree());

@@ -2,7 +2,7 @@ base_class: PyDictionary
 want_dict: true
 ctr:
 incl: object
-import: java.util.concurrent.ConcurrentMap
+import: java.org.jpp.util.concurrent.ConcurrentMap
 noinherit:
     public PyDictionaryDerived(PyType subtype, ConcurrentMap backingMap, boolean useBackingMap) {
         super(subtype, backingMap, useBackingMap);

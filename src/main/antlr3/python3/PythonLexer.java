@@ -1,6 +1,6 @@
 // $ANTLR 3.5.2 Python.g 2020-08-11 14:04:05
 
-package astnodes;
+package org.jpp.astnodes;
 
 
 import org.antlr.runtime.*;
@@ -134,7 +134,7 @@ public class PythonLexer extends Lexer {
 	    }
 
 	    /**
-	     *  Taken directly from antlr's Lexer.java -- needs to be re-integrated every time
+	     *  Taken directly from org.antlr's Lexer.java -- needs to be re-integrated every time
 	     *  we upgrade from Antlr (need to consider a Lexer subclass, though the issue would
 	     *  remain).
 	     */

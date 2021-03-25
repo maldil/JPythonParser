@@ -62,7 +62,7 @@
 grammar Base;
 
 @header {
-package astnodes;
+package org.jpp.astnodes;
 }
 
 @members {
@@ -83,7 +83,7 @@ package astnodes;
 }
 
 @lexer::header {
-package astnodes;
+package org.jpp.astnodes;
 }
 
 @lexer::members {
@@ -109,7 +109,7 @@ private ErrorHandler errorHandler;
     }
 
     /**
-     *  Taken directly from antlr's Lexer.java -- needs to be re-integrated every time
+     *  Taken directly from org.antlr's Lexer.java -- needs to be re-integrated every time
      *  we upgrade from Antlr (need to consider a Lexer subclass, though the issue would
      *  remain).
      */

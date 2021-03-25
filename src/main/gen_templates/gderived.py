@@ -14,7 +14,7 @@ from datetime import datetime
 
 org_python_dir = os.path.join(os.path.dirname(os.path.abspath(scriptdir)),
                               'java')
-core_dir = os.path.join(org_python_dir, 'heart')
+core_dir = os.path.join(org_python_dir, 'org.jpp.heart')
 
 
 
@@ -23,9 +23,9 @@ DERIVED_HEADER = """\
 package %s;
 
 import java.io.Serializable;
-import heart.*;
-import heart.finalization.FinalizeTrigger;
-import heart.finalization.FinalizablePyObjectDerived;"""
+import org.jpp.heart.*;
+import org.jpp.heart.finalization.FinalizeTrigger;
+import org.jpp.heart.finalization.FinalizablePyObjectDerived;"""
 
 modif_re = re.compile(r"(?:\((\w+)\))?(\w+)")
 
@@ -248,7 +248,7 @@ def process(fn, outfile, lazy=False):
 
 def hack_derived_header(fn, result):
     """Fix the package and import headers for derived classes outside of
-    heart
+    org.jpp.heart
     """
 
     parent = os.path.dirname(fn)

@@ -16,7 +16,7 @@ from the file int.derived:
 
 from mappings, the relevant entry (please keep sorted):
 
-  int.derived:heart.PyIntegerDerived
+  int.derived:org.jpp.heart.PyIntegerDerived
 
 To generate the source of the class, src/org/python/core/PyInteger.java:
 

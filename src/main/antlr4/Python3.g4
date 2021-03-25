@@ -31,7 +31,7 @@
 grammar Python3;
 
 @header {
-package antlr;
+package org.antlr;
 }
 // All comments that start with "///" are copy-pasted from
 // The Python Language Reference
@@ -41,9 +41,9 @@ tokens { INDENT, DEDENT }
 
 @lexer::members {
   // A queue where extra tokens are pushed on (see the NEWLINE lexer rule).
-  private java.util.LinkedList<Token> tokens = new java.util.LinkedList<>();
+  private java.org.jpp.util.LinkedList<Token> tokens = new java.org.jpp.util.LinkedList<>();
   // The stack that keeps track of the indentation level.
-  private java.util.Stack<Integer> indents = new java.util.Stack<>();
+  private java.org.jpp.util.Stack<Integer> indents = new java.org.jpp.util.Stack<>();
   // The amount of opened braces, brackets and parenthesis.
   private int opened = 0;
   // The most recently produced token.

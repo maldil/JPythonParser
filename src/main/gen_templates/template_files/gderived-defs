@@ -1,11 +1,11 @@
 # copyright 2004-2005 Samuele Pedroni
 define: (CompilationUnit)derived_class
   /* Generated file, do not modify.  See jython/src/templates/gderived.py. */
-  package heart;
+  package org.jpp.heart;
 
   import java.io.Serializable;
-  import heart.finalization.FinalizeTrigger;
-  import heart.finalization.FinalizablePyObjectDerived;
+  import org.jpp.heart.finalization.FinalizeTrigger;
+  import org.jpp.heart.finalization.FinalizablePyObjectDerived;
 
   public class `concat`(`base,Derived) extends `base implements Slotted, FinalizablePyObjectDerived, TraverseprocDerived {
 
